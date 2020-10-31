@@ -1,6 +1,7 @@
 <template>
   <main>
-    <pxHeader></pxHeader>
+    <px-header />
+    <router-view class="container px-5 sm:px-20 py-20 flex justify-center" />
   </main>
 </template>
 
@@ -9,7 +10,7 @@ import pxHeader from "@/components/pxHeader";
 export default {
   name: "App",
   components: {
-    pxHeader
+    pxHeader,
   },
 };
 </script>
