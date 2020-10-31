@@ -36,9 +36,9 @@ export default {
   props: {
     assets: {
       type: Array,
-      default: () => [],
-    },
-  },
+      default: () => []
+    }
+  }
 };
 </script>
 

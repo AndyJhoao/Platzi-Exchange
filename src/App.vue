@@ -10,8 +10,8 @@ import pxHeader from "@/components/pxHeader";
 export default {
   name: "App",
   components: {
-    pxHeader,
-  },
+    pxHeader
+  }
 };
 </script>
 
