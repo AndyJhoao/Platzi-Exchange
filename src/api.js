@@ -1,23 +1,23 @@
-const url = "https://api.coincap.io/v2";
+const url = 'https://api.coincap.io/v2'
 
 function getAssets() {
-  return getRequest("assets?limit=20");
+  return getRequest('assets?limit=20')
 }
 
 function getRequest(method) {
   return fetch(`${url}/${method}`)
-    .then((response) => response.json())
-    .then((response) => {
-      return response.data;
+    .then(response => response.json())
+    .then(response => {
+      return response.data
     })
-    .catch((error) => {
-      console.log("Error", error);
-    });
+    .catch(error => {
+      console.log('Error', error)
+    })
 }
 
 export default {
-  getAssets,
-};
+  getAssets
+}
 // const url = "https://api.coincap.io/v2";
 
 // function getAssets() {

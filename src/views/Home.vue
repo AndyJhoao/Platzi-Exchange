@@ -8,20 +8,20 @@
 </template>
 
 <script>
-import api from "@/api";
-import pxAssetsTable from "@/components/pxAssetsTable";
+import api from '@/api'
+import pxAssetsTable from '@/components/pxAssetsTable'
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
-    pxAssetsTable,
+    pxAssetsTable
   },
   data() {
     return {
-      assets: [],
-    };
+      assets: []
+    }
   },
   created() {
-    api.getAssets().then((assets) => (this.assets = assets));
-  },
-};
+    api.getAssets().then(assets => (this.assets = assets))
+  }
+}
 </script>

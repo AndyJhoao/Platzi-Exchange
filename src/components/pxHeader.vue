@@ -21,11 +21,11 @@
 </template>
 
 <script>
-import pxIcon from "@/components/pxIcon";
+import pxIcon from '@/components/pxIcon'
 export default {
-  name: "pxHeader",
+  name: 'pxHeader',
   components: {
-    pxIcon,
-  },
-};
+    pxIcon
+  }
+}
 </script>

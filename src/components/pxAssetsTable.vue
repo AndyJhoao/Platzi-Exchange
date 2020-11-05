@@ -42,24 +42,24 @@
 
 <script>
 export default {
-  name: "pxAssetsTable",
+  name: 'pxAssetsTable',
 
   props: {
     assets: {
       type: Array,
-      default: () => [],
-    },
-  },
-};
+      default: () => []
+    }
+  }
+}
 </script>
 
 <style scoped>
 .up::before {
-  content: "👆";
+  content: '👆';
 }
 
 .down::before {
-  content: "👇";
+  content: '👇';
 }
 
 td {
