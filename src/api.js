@@ -15,8 +15,20 @@ function getRequest(method) {
     })
 }
 
+function getAsset(coin) {
+  return fetch(`${url}/assets/${coin}`)
+    .then(response => response.json())
+    .then(response => {
+      return response.data
+    })
+    .catch(error => {
+      console.log('Error', error)
+    })
+}
+
 export default {
-  getAssets
+  getAssets,
+  getAsset
 }
 // const url = "https://api.coincap.io/v2";
 
