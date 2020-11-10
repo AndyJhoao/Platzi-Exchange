@@ -1,6 +1,9 @@
 <template>
   <div class="flex-col">
-    <template v-if="asset.id">
+    <div class="flex justify-center">
+      <pacman-loader :loading="isLoading" :color="'#68d391'" :size="100" />
+    </div>
+    <template v-if="!isLoading">
       <div class="flex flex-col sm:flex-row justify-around items-center">
         <div class="flex flex-col items-center">
           <img
@@ -65,6 +68,14 @@
           <span class="text-xl"></span>
         </div>
       </div>
+
+      <line-chart
+        class="my-10"
+        :colors="['orange']"
+        :min="min"
+        :max="max"
+        :data="history.map(h => [h.date, parseFloat(h.priceUsd).toFixed(2)])"
+      ></line-chart>
     </template>
   </div>
 </template>
@@ -75,16 +86,44 @@ export default {
   name: 'CoinDetail',
   data() {
     return {
-      asset: {}
+      asset: {},
+      isLoading: false,
+      history: []
     }
   },
   created() {
     this.getCoin()
   },
+  computed: {
+    min() {
+      return Math.min(
+        ...this.history.map(h => parseFloat(h.priceUsd).toFixed(2))
+      )
+    },
+
+    max() {
+      return Math.max(
+        ...this.history.map(h => parseFloat(h.priceUsd).toFixed(2))
+      )
+    },
+
+    avg() {
+      return Math.abs(
+        ...this.history.map(h => parseFloat(h.priceUsd).toFixed(2))
+      )
+    }
+  },
   methods: {
     getCoin() {
       const id = this.$route.params.id
-      api.getAsset(id).then(asset => (this.asset = asset))
+      this.isLoading = true
+
+      Promise.all([api.getAsset(id), api.getAssetHistory(id)])
+        .then(([asset, history]) => {
+          this.asset = asset
+          this.history = history
+        })
+        .finally(() => (this.isLoading = false))
     }
   }
 }
